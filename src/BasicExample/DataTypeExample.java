@@ -3,7 +3,8 @@ package BasicExample;
 public class DataTypeExample {
     public static void main(String [] args){
 //        Transition.runExample();
-        Example.run();
+//        Example.run();
+        StringExample.equality();
     }
 }
 
@@ -37,6 +38,21 @@ class Transition{
         System.out.println(chr);
     }
 }
+
+class StringExample{
+    static void equality(){
+        String s1 = "Hello";
+        String s2 = "Hello";
+
+        if (s1 == s2) System.out.println("Equal");
+        else System.out.println("Not equal");
+
+        s1 = "Good bye!"; //this will now point to a new location
+
+        System.out.println((s1==s2) ? "Equal": "Not equal");
+    }
+}
+
 
 class Example{
 
