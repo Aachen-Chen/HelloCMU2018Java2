@@ -1,3 +1,5 @@
+package DSCUTJava.chap09.src;
+
 import java.io.File;
 import java.io.FileReader;
 import java.io.FileWriter;
@@ -7,7 +9,7 @@ public class FileReaderWriterDemo
 {
 	public static void main(String[] args) throws IOException
 	{
-		// ¹¹ÔìÊäÈëÁ÷¶ÔÏó
+		// ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
 		File file = new File("src/FileReaderWriterDemo.java");
 		FileReader f = new FileReader(file);
 		FileWriter fout = new FileWriter("copy-of-file.txt");
@@ -15,21 +17,21 @@ public class FileReaderWriterDemo
 		int n = (int) (file.length() / 30);
 		System.out.println("First " + n
 				+ " char of the file one read() at a time");
-		// Ê¹ÓÃread()ºÍwrite
+		// Ê¹ï¿½ï¿½read()ï¿½ï¿½write
 		for (int i = 0; i < n; i++)
 		{
 			fout.write(f.read());
 
 		}
 		System.out.println("Reading the next " + n + " with one read(b[])");
-		// Ê¹ÓÃread(char[]b )ºÍwrite(char[] b);
+		// Ê¹ï¿½ï¿½read(char[]b )ï¿½ï¿½write(char[] b);
 		char b[] = new char[n];
 		if (f.read(b) != n)
 		{
 			System.err.println("couldn't read " + n + " bytes.");
 		}
 		fout.write(b);
-		// Ê¹ÓÃread(b,offset,len)ºÍwrite£¨b,offset,len£©
+		// Ê¹ï¿½ï¿½read(b,offset,len)ï¿½ï¿½writeï¿½ï¿½b,offset,lenï¿½ï¿½
 		System.out
 				.println("Reading the rest chars  with  read(b[],offset,len)");
 		int count = 0;

@@ -1,3 +1,5 @@
+package DSCUTJava.chap09.src;
+
 import java.io.FileInputStream;
 import java.io.IOException;
 
@@ -6,20 +8,20 @@ public class FileInputStreamDemo
 	public static void main(String[] args) throws IOException
 	{
 		int size;
-		//构造输入流对象
+		//锟斤拷锟斤拷锟斤拷锟斤拷锟斤拷锟斤拷锟斤拷
 		FileInputStream f = new FileInputStream("src/FileInputStreamDemo.java");
 		System.out.println("Total Available Bytes: " + (size = f.available()));
 		int n = size / 30;
 		System.out.println("First " + n
 				+ " bytes of the file one read() at a time");
-		//使用read()
+		//使锟斤拷read()
 		for (int i = 0; i < n; i++)
 		{
 			System.out.print((char) f.read());
 		}
 		System.out.println("\nStill Available: " + f.available());
 		System.out.println("Reading the next " + n + " with one read(b[])");
-		//使用read(byte[]b )
+		//使锟斤拷read(byte[]b )
 		byte b[] = new byte[n];
 		if (f.read(b) != n)
 		{
@@ -31,7 +33,7 @@ public class FileInputStreamDemo
 		f.skip(size / 2);
 		System.out.println("Still Available: " + f.available());
 		System.out.println("Reading " + n / 2 + " into the end of array");
-		//使用read(b,offset,len)
+		//使锟斤拷read(b,offset,len)
 		if (f.read(b, n / 2, n / 2) != n / 2)
 		{
 			System.err.println("couldn't read " + n / 2 + " bytes.");
