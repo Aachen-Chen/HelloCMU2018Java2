@@ -25,3 +25,45 @@ class ChineseChar{
     }
 
 }
+
+
+class Draft1004{
+    public static void main(String[] args){
+        Draft1004 d = new Draft1004();
+        System.out.println(d.findGCD(12,16));
+    }
+
+    public int findGCD(int n, int d){
+        if(n==0) return 1;
+        if(d==0) return n;
+        else findGCD(d, n%d);
+        return 0;
+    }
+}
+
+class Example{
+
+    Example(int i){num = i;}
+    int num;
+
+    static void run(){
+        // Can create obj
+        Example e = new Example(1);
+        // Can use obj method
+        e.methods();
+        // Can read obj's field
+        System.out.println(e.num);
+        // Can change obj's field
+        e.num = 2;
+        // But cannot use this.
+//        this.methods();
+    }
+
+    void methods(){
+        System.out.println("Member"+num +"'s method!");
+    }
+}
+
+class Draft1007 {
+
+}

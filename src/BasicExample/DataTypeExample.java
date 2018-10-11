@@ -53,27 +53,27 @@ class StringExample{
     }
 }
 
+class StringComparison{
+    public static void main(String [] args){
+        String a = "a";
+        String A = "A";
+        String bb = "bb";
+        String B = "B";
 
-class Example{
+        System.out.println(a.compareTo(A));     // == a - A
+        System.out.println(A.compareTo(B));     // == A - B
+        System.out.println(a.compareTo(bb));    // == a - b
+        System.out.println(bb.compareTo(B));    // == b - B = a - A
+        System.out.println("cc".compareTo("bb"));// == c-b
 
-    Example(int i){num = i;}
-    int num;
-
-    static void run(){
-        // Can create obj
-        Example e = new Example(1);
-        // Can use obj method
-        e.methods();
-        // Can read obj's field
-        System.out.println(e.num);
-        // Can change obj's field
-        e.num = 2;
-        // But cannot use this.
-//        this.methods();
     }
+}
 
-    void methods(){
-        System.out.println("Member"+num +"'s method!");
+class CharExample{
+    public static void main(String[] args){
+        // +-*/ 3572 + 40
+        char multiplyChr = '*';
+        int multiplyInt = 42;
+        System.out.println(multiplyChr==multiplyInt);
     }
-
 }
