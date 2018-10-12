@@ -71,7 +71,7 @@ class StringComparison{
 
 class CharExample{
     public static void main(String[] args){
-        // +-*/ 3572 + 40
+        // +-*/ 3527 + 40
         char multiplyChr = '*';
         int multiplyInt = 42;
         System.out.println(multiplyChr==multiplyInt);
