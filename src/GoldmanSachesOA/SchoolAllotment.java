@@ -1,20 +1,15 @@
 package GoldmanSachesOA;
 
+
+import BasicExample.A_ExampleList.LambdaExample;
 import java.util.*;
 
-public class SchoolAllotment {
+public class SchoolAllotment implements LambdaExample {
     public static List<Integer> allocateSchools(List<Integer> schoolSeatsArray,
                                                 List<Integer> studentScoreArray,
                                                 List<List<Integer>> studentSchoolPreferencesArray) {
 
-
-
-        Map<Integer, Integer> score2Index = new TreeMap<>(new Comparator<Integer>() {
-            @Override
-            public int compare(Integer o1, Integer o2) {
-                return o2 - o1;
-            }
-        });
+        Map<Integer, Integer> score2Index = new TreeMap<>((o1, o2) -> o2 - o1);
 
         for (int i = 0; i < studentScoreArray.size(); i++) {
             score2Index.put(studentScoreArray.get(i), i);

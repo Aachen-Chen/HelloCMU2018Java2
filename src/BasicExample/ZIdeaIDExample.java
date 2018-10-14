@@ -25,6 +25,7 @@ public class ZIdeaIDExample {
     public class PublicInnerClass{}
     static class StaticInnerClass{}
     static private class StaticPrivateInnerClass{}
+
 }
 
 // No such thing.

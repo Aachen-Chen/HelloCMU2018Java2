@@ -35,7 +35,7 @@ interface Examplifiable{
     public static void staticRun(){};
 }
 
-class Examplification implements Examplifiable{
+class Examplification implements Examplifiable {
     // Must implements all non-private method
     @Override
     public void run() {}
