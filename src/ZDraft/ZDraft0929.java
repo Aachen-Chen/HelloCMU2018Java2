@@ -67,5 +67,8 @@ class Example{
 class Draft1007 {
     public static void main(String[]args){
 //        "abc".toChar
+        String abc = "abc";
+        abc = abc + "d";
+        System.out.printf(abc);
     }
 }
