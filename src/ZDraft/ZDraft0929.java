@@ -1,9 +1,18 @@
 package ZDraft;
 
+import java.util.HashSet;
 import java.util.Scanner;
+import java.util.Set;
 
 public class ZDraft0929 {
 
+}
+
+class Draft1028{
+    public static void main(String[] args){
+        Set<String> s = new HashSet<>();
+        System.out.println("");
+    }
 }
 
 class ChineseChar{
@@ -22,6 +31,7 @@ class ChineseChar{
         for(String line: strArr){
 
         }
+
     }
 
 }
@@ -41,28 +51,7 @@ class Draft1004{
     }
 }
 
-class Example{
 
-    Example(int i){num = i;}
-    int num;
-
-    static void run(){
-        // Can create obj
-        Example e = new Example(1);
-        // Can use obj method
-        e.methods();
-        // Can read obj's field
-        System.out.println(e.num);
-        // Can change obj's field
-        e.num = 2;
-        // But cannot use this.
-//        this.methods();
-    }
-
-    void methods(){
-        System.out.println("Member"+num +"'s method!");
-    }
-}
 
 class Draft1007 {
     public static void main(String[]args){

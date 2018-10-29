@@ -85,4 +85,25 @@ class InnerClassExample {
 
 }
 
+class StaticMethodExample {
 
+    StaticMethodExample(int i){num = i;}
+    int num;
+
+    static void run(){
+        // Can create obj
+        StaticMethodExample e = new StaticMethodExample(1);
+        // Can use obj method
+        e.methods();
+        // Can read obj's field
+        System.out.println(e.num);
+        // Can change obj's field
+        e.num = 2;
+        // But cannot use this.
+//        this.methods();
+    }
+
+    void methods(){
+        System.out.println("Member"+num +"'s method!");
+    }
+}

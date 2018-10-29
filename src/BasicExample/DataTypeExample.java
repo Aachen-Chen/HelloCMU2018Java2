@@ -12,7 +12,7 @@ class Transition{
     static void runExample(){
         // WrapperA → WrapperB: WrapperA.valueOf
         String a ="123";
-        Integer i = 1;
+        Integer i;
         i = Integer.valueOf(a);
         System.out.println(++i);
 
@@ -20,6 +20,8 @@ class Transition{
         for(char x:a.toCharArray()){
             System.out.println(x);
         }
+
+        String fromChar = new String(a.toCharArray());
 
         System.out.println(Byte.MAX_VALUE);
 

@@ -1,10 +1,12 @@
 package GoldmanSachesOA;
 
 
-import BasicExample.A_ExampleList.LambdaExample;
+import BasicExample.A_ExampleList.*;
 import java.util.*;
+import java.util.TreeMap;
 
-public class SchoolAllotment implements LambdaExample {
+
+public class SchoolAllotment implements LambdaExample, MapExample.Tree {
     public static List<Integer> allocateSchools(List<Integer> schoolSeatsArray,
                                                 List<Integer> studentScoreArray,
                                                 List<List<Integer>> studentSchoolPreferencesArray) {

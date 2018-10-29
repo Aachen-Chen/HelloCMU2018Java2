@@ -15,6 +15,7 @@ class ZDraft0913{
     public static void main(String[] args){
         String a = "abc";
         char[] b = a.toCharArray();
+        char c = 65;
         b[0] = (new String(new char[] {b[0]})).toUpperCase().toCharArray()[0];
         System.out.println(new String(b));
     }
