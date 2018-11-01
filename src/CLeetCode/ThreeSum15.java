@@ -117,6 +117,7 @@ public class ThreeSum15 {
     }
 
     public List<List<Integer>> sol2(int[] nums) {
+        // n^2
         List<List<Integer>> result = new LinkedList<List<Integer>>();
         Arrays.sort(nums);
         for (int i = 0; i < nums.length && nums[i] <= 0; i++) {
@@ -144,6 +145,7 @@ public class ThreeSum15 {
     }
 
     private List<List<Integer>> sol1(int[] nums) {
+        // Failed. Duplicate result. just practice Collections
         Map<Integer, HashSet<Integer>> dict = new HashMap<>();
         for(int i=0; i<nums.length; i++){
             for(int j=i+1; j<nums.length; j++){
