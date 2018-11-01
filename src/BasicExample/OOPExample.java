@@ -1,5 +1,10 @@
 package BasicExample;
 
+import java.util.ArrayList;
+import java.util.Collections;
+import java.util.Comparator;
+import java.util.List;
+
 public class OOPExample {
     public static void main(String[] args){
         System.out.println("abc5");
@@ -82,7 +87,61 @@ class Figures extends Examplification{
 
 
 class InnerClassExample {
+    public static void main(String[]args){
+        Heinz mism2018 = new Heinz();
+        Collections.sort(mism2018.students);
+        Collections.sort(mism2018.students, new GpaComparator());
+        mism2018.sortbyAgeHeight();
+        Collections.sort(mism2018.students, new Comparator<HeinzStudent>() {
+            @Override
+            public int compare(HeinzStudent o1, HeinzStudent o2) {
+                return o1.age - o2.age;
+            }
+        });
+        Collections.sort(mism2018.students, (o1, o2)->o1.height-o2.height);
+    }
+}
 
+class Heinz{
+    List<HeinzStudent> students;
+    Heinz(){
+        students = new ArrayList<HeinzStudent>();
+        students.add(new HeinzStudent(1, 4));
+        students.add(new HeinzStudent(2, 3, 22, 180));
+        students.add(new HeinzStudent(3, 2, 23, 160));
+    }
+    void sortbyAgeHeight(){
+        class AgeHeightComparator implements Comparator<HeinzStudent>{
+            @Override
+            public int compare(HeinzStudent o1, HeinzStudent o2) {
+                return o1.age-o2.age==0? o1.height-o2.height: o1.age-o2.age;
+            }
+        }
+        Collections.sort(students, new AgeHeightComparator());
+    }
+}
+
+class HeinzStudent implements Comparable<HeinzStudent>{
+    private int id;
+    private int gpa;
+    int age;
+    int height;
+    HeinzStudent(){this.id=0; this.gpa=0; this.age=20; this.height=170;}
+    HeinzStudent(int id, int gpa){this.id=id; this.gpa=gpa;}
+    HeinzStudent(int id, int gpa, int age, int height){this.id=id; this.gpa=gpa; this.age=age; this.height=height;}
+
+    @Override
+    public int compareTo(HeinzStudent o) {
+        return this.id - o.id;
+    }
+    public int getGpa() {return gpa;}
+}
+
+class GpaComparator implements Comparator<HeinzStudent>{
+    @Override
+    public int compare(HeinzStudent o1, HeinzStudent o2) {
+        return o1.getGpa() - o2.getGpa();
+    }
 }
 
 class StaticMethodExample {
