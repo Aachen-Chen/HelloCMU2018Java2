@@ -86,6 +86,8 @@ class Figures extends Examplification{
 }
 
 
+
+
 class InnerClassExample {
     public static void main(String[]args){
         Heinz mism2018 = new Heinz();
@@ -143,6 +145,12 @@ class GpaComparator implements Comparator<HeinzStudent>{
         return o1.getGpa() - o2.getGpa();
     }
 }
+
+
+
+
+
+
 
 class StaticMethodExample {
 
