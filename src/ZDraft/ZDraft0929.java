@@ -5,7 +5,23 @@ import java.util.Scanner;
 import java.util.Set;
 
 public class ZDraft0929 {
+    public static void main(String[] args){
+        StringBuilder sb = new StringBuilder("1");
+        sb.insert(0, "A");
+        sb.insert(0, 1.2);
+        System.out.println(sb.toString());
+        String s = "1";
+        System.out.println(s.charAt(0)-48);
+        System.out.println();
 
+        char c1 = '1';
+        char c2 = '2';
+        char c3 = (char)(c1+c2-48);
+        System.out.println(c3);
+        System.out.println((char)(c3+1));
+        System.out.println(c3>'9');
+        System.out.println((char)(c3-10));
+    }
 }
 
 class Draft1028{
