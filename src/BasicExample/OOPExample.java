@@ -137,6 +137,9 @@ class HeinzStudent implements Comparable<HeinzStudent>{
         return this.id - o.id;
     }
     public int getGpa() {return gpa;}
+//    public String toString(){
+////        return String.valueOf()
+//    }
 }
 
 class GpaComparator implements Comparator<HeinzStudent>{
