@@ -2,7 +2,8 @@ package CLeetCode;
 
 import java.util.Arrays;
 
-public class PartitionEqualSubsetSum416 {
+public class PartitionEqualSubsetSum416 implements DynamicProgrammingTag{
+    // 0-1 backpack
     public boolean canPartition(int[] nums) {
         if(nums == null || nums.length < 2) return false;
 
@@ -40,7 +41,7 @@ public class PartitionEqualSubsetSum416 {
                     );
                 }
                 else {
-                    // but if previous items could, fine, this one could, too.
+                    // if need a sum > current number, can only see previous row.
                     dp[i][j] = dp[i - 1][j];
                 }
             }

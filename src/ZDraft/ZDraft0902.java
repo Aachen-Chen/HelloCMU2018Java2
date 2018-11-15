@@ -13,13 +13,22 @@ public class ZDraft0902 {
 
 class ZDraft0913{
     public static void main(String[] args){
-        String a = "abc";
-        char[] b = a.toCharArray();
-        char c = 65;
-        b[0] = (new String(new char[] {b[0]})).toUpperCase().toCharArray()[0];
-        System.out.println(new String(b));
+//        String a = "abc";
+//        char[] b = a.toCharArray();
+//        char c = 65;
+//        b[0] = (new String(new char[] {b[0]})).toUpperCase().toCharArray()[0];
+//        System.out.println(new String(b));
+
+        String b = "1 2 3";
+        String[] c = b.split("\\s");
+        for(String s: c){
+            System.out.println(s);
+        }
+
     }
 }
+
+
 
 class StringSorting{
 //    public static void main(String[] args){
@@ -40,5 +49,11 @@ class StringSorting{
 //
 //        System.out.println(new Integer(1).compareTo(new Integer(2)));
 //    }
+}
+
+class ZDraft1107{
+    public static void main(String[] args){
+
+    }
 }
 
