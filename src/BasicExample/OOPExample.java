@@ -89,9 +89,7 @@ class Figures extends Examplification{
 
 class HeinzStudent implements Comparable<HeinzStudent>{
     private int id;
-    private int gpa;
-    int age;
-    int height;
+    int gpa, age, height;
     HeinzStudent(int id, int gpa){this.id=id; this.gpa=gpa;}
     HeinzStudent(int id, int gpa, int age, int height){this.id=id; this.gpa=gpa; this.age=age; this.height=height;}
 
@@ -99,13 +97,12 @@ class HeinzStudent implements Comparable<HeinzStudent>{
     public int compareTo(HeinzStudent o) {
         return this.id - o.id;
     }
-    public int getGpa() {return gpa;}
 }
 
 class GpaComparator implements Comparator<HeinzStudent>{
     @Override
     public int compare(HeinzStudent o1, HeinzStudent o2) {
-        return o1.getGpa() - o2.getGpa();
+        return o1.gpa - o2.gpa;
     }
 }
 
