@@ -106,7 +106,30 @@ class GpaComparator implements Comparator<HeinzStudent>{
     }
 }
 
-class InnerClassExample {
+
+class Heinz{
+    List<HeinzStudent> students;
+    Heinz(){
+        students = new ArrayList<>();
+        students.add(new HeinzStudent(1, 4));
+        students.add(new HeinzStudent(2, 3, 22, 180));
+        students.add(new HeinzStudent(3, 2, 23, 160));
+    }
+    void sortbyAgeHeight(){
+        // inner class example too.
+        class AgeHeightComparator implements Comparator<HeinzStudent>{
+            @Override
+            public int compare(HeinzStudent o1, HeinzStudent o2) {
+                return o1.age-o2.age==0? o1.height-o2.height: o1.age-o2.age;
+            }
+        }
+        Collections.sort(students, new AgeHeightComparator());
+    }
+}
+
+interface SortExample{}
+
+class InnerClassExample implements SortExample {
     public static void main(String[]args){
         Heinz mism2018 = new Heinz();
         Collections.sort(mism2018.students);
@@ -121,28 +144,6 @@ class InnerClassExample {
         Collections.sort(mism2018.students, (o1, o2)->o1.height-o2.height);
     }
 }
-
-class Heinz{
-    List<HeinzStudent> students;
-    Heinz(){
-        students = new ArrayList<HeinzStudent>();
-        students.add(new HeinzStudent(1, 4));
-        students.add(new HeinzStudent(2, 3, 22, 180));
-        students.add(new HeinzStudent(3, 2, 23, 160));
-    }
-    void sortbyAgeHeight(){
-        class AgeHeightComparator implements Comparator<HeinzStudent>{
-            @Override
-            public int compare(HeinzStudent o1, HeinzStudent o2) {
-                return o1.age-o2.age==0? o1.height-o2.height: o1.age-o2.age;
-            }
-        }
-        Collections.sort(students, new AgeHeightComparator());
-    }
-}
-
-
-
 
 
 
