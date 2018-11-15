@@ -177,3 +177,17 @@ class StaticMethodExample {
         System.out.println("Member"+num +"'s method!");
     }
 }
+
+
+
+class ObjectExample {
+
+}
+
+class Inteval {
+    int i;
+    Inteval(){
+        this.i = 1;
+    }
+
+}
