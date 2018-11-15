@@ -87,6 +87,27 @@ class Figures extends Examplification{
 
 
 
+class HeinzStudent implements Comparable<HeinzStudent>{
+    private int id;
+    private int gpa;
+    int age;
+    int height;
+    HeinzStudent(int id, int gpa){this.id=id; this.gpa=gpa;}
+    HeinzStudent(int id, int gpa, int age, int height){this.id=id; this.gpa=gpa; this.age=age; this.height=height;}
+
+    @Override
+    public int compareTo(HeinzStudent o) {
+        return this.id - o.id;
+    }
+    public int getGpa() {return gpa;}
+}
+
+class GpaComparator implements Comparator<HeinzStudent>{
+    @Override
+    public int compare(HeinzStudent o1, HeinzStudent o2) {
+        return o1.getGpa() - o2.getGpa();
+    }
+}
 
 class InnerClassExample {
     public static void main(String[]args){
@@ -123,31 +144,6 @@ class Heinz{
     }
 }
 
-class HeinzStudent implements Comparable<HeinzStudent>{
-    private int id;
-    private int gpa;
-    int age;
-    int height;
-    HeinzStudent(){this.id=0; this.gpa=0; this.age=20; this.height=170;}
-    HeinzStudent(int id, int gpa){this.id=id; this.gpa=gpa;}
-    HeinzStudent(int id, int gpa, int age, int height){this.id=id; this.gpa=gpa; this.age=age; this.height=height;}
-
-    @Override
-    public int compareTo(HeinzStudent o) {
-        return this.id - o.id;
-    }
-    public int getGpa() {return gpa;}
-//    public String toString(){
-////        return String.valueOf()
-//    }
-}
-
-class GpaComparator implements Comparator<HeinzStudent>{
-    @Override
-    public int compare(HeinzStudent o1, HeinzStudent o2) {
-        return o1.getGpa() - o2.getGpa();
-    }
-}
 
 
 
@@ -180,9 +176,6 @@ class StaticMethodExample {
 
 
 
-class ObjectExample {
-
-}
 
 class Inteval {
     int i;
