@@ -93,3 +93,60 @@ class ListNode {
         return sb.toString();
     }
 }
+
+class OldSolution{
+    private static ListNode sol2(ListNode l1, ListNode l2){
+        StringBuilder sb1 = dfs(l1);
+        StringBuilder sb2 = dfs(l2);
+        // int resultNum = Integer.parseInt(sb1.toString())+Integer.parseInt(sb2.toString());   // Wrong because int not large enough.
+        String resultString = stringAdd(sb1.toString(), sb2.toString());
+        // String resultString = stringAdd("10", "10");
+        ListNode result = build(resultString, resultString.length()-1);
+        // ListNode result = build("123", 2);
+        return result;
+    }
+    private static StringBuilder dfs(ListNode cur){
+        if(cur==null) return null;
+        StringBuilder child = dfs(cur.next);
+        if(child==null) return new StringBuilder(String.valueOf(cur.val));
+        child.append(cur.val);
+        return child;
+        // [3,2,1] -> "123"
+    }
+
+    private static String stringAdd(String s1, String s2){
+        if(s1==null || s2==null) {return null;}
+        if(s1.length()<s2.length()){
+            String temp = s1; s1 = s2; s2 = temp;
+        }
+        // "123" -> [3,2,1]
+        char[] cLong = (new StringBuilder(s1)).reverse().toString().toCharArray();
+        char[] cShort= (new StringBuilder(s2)).reverse().toString().toCharArray();
+        boolean ten = false;
+        for(int i=0; i<cLong.length; i++){
+            if(i<cShort.length) {
+                cLong[i]=(char)(cLong[i]+cShort[i]-48);
+            }
+            if(ten) {
+                cLong[i]=(char)(cLong[i]+1);
+                ten = false;
+            }
+            if(cLong[i]>'9') {
+                cLong[i]=(char)(cLong[i]-10);
+                ten = true;
+            }
+        }
+        StringBuilder sb = new StringBuilder(new String(cLong));
+        if(ten){ sb.append("1"); }
+        return sb.reverse().toString();
+    }
+
+    private static ListNode build(String s, int index){
+        if(s==null || index<0) return null;
+        int curDigit = s.charAt(index)-48;
+        ListNode cur = new ListNode(curDigit);
+        cur.next = build(s, index-1);
+        return cur;
+    }
+
+}
