@@ -1,5 +1,7 @@
 package BasicExample;
 
+import java.util.Arrays;
+
 public class DataTypeExample {
     public static void main(String [] args){
     }
@@ -26,7 +28,20 @@ class StringRegexExample{
     }
 }
 
-
+class ListSort{
+    public static void main(String[] args){
+        String a = "abc";
+        String b = "aaa";
+        String c = "a";
+        String d = "z";
+        String e = "Z";
+        String[] abc = new String[] {a, b, c, d, e};
+        Arrays.sort(abc);
+        for(String x: abc){
+            System.out.println(x);
+        }
+    }
+}
 
 class Transition{
     // 2018.10.29: Deprecated

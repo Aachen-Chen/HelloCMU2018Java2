@@ -147,8 +147,6 @@ class InnerClassExample implements SortExample {
 
 
 
-
-
 class StaticMethodExample {
 
     StaticMethodExample(int i){num = i;}
