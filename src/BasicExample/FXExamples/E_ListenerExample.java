@@ -10,7 +10,7 @@ import javafx.beans.property.SimpleDoubleProperty;
 // Low Level Binding
 import javafx.beans.binding.DoubleBinding;
 
-public class ObservableExample {
+public class E_ListenerExample {
     public static void main(String[] args){
         DoubleProperty radius = new SimpleDoubleProperty();
         DoubleBinding surface = new DoubleBinding() {
@@ -37,6 +37,7 @@ public class ObservableExample {
                 return (4 / 3.) * Math.PI * Math.pow(radius.get(), 3);
             }
         };
+
         volumn.addListener(((observable, oldValue, newValue) -> {
             double v = newValue.doubleValue();
             System.out.println(

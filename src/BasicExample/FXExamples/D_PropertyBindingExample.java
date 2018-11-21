@@ -11,7 +11,7 @@ import javafx.beans.binding.NumberBinding;  // Interface
 // For low level binding
 import javafx.beans.binding.DoubleBinding;  // Abstract class
 
-public class PropertyBindingExample {
+public class D_PropertyBindingExample {
     // bmi = weight * 703 / height^2
 }
 
