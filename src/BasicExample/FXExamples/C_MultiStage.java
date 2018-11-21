@@ -9,14 +9,12 @@ import javafx.scene.layout.BorderPane;
 import javafx.stage.Stage;
 
 
-public class MultiStage extends Application {
+public class C_MultiStage extends Application {
 
     private Stage byeStage = new Stage();
     private Scene byeScene;
     private BorderPane helloRoot = new BorderPane();
     private BorderPane byeRoot = new BorderPane();
-
-    public static void main(String[] args) { launch(args); }
 
     @Override
     public void start(Stage helloStage) throws Exception {
@@ -24,19 +22,8 @@ public class MultiStage extends Application {
         Button helloButton = new Button("Hello!");
         helloButton.setOnAction(new HelloButtonHandler());
 
-        Button byeButton = new Button("Bye!");
-        // Lambda call!
-//        byeButton.setOnAction(new ByeButtonHandler());
-        byeButton.setOnAction(
-                (x) -> byeStage.close()
-        );
-        // this "x" is a parameter passed to EventHandler<ActionEvent>.handle()
-
         helloRoot.setCenter(helloButton);
-        byeRoot.setCenter(byeButton);
-
         Scene helloScene = new Scene(helloRoot, 200, 100);
-        byeScene = new Scene(byeRoot, 200, 100);
 
         helloStage.setTitle("Hello Stage");
         helloStage.setScene(helloScene);
@@ -46,6 +33,14 @@ public class MultiStage extends Application {
     private class HelloButtonHandler implements EventHandler<ActionEvent> {
         @Override
         public void handle(ActionEvent event) {
+            Button byeButton = new Button("Bye!");
+            // Lambda call!
+            byeButton.setOnAction((x) -> byeStage.close());
+            // this "x" is a parameter passed to EventHandler<ActionEvent>.handle()
+
+            byeRoot.setCenter(byeButton);
+            byeScene = new Scene(byeRoot, 200, 100);
+
             byeStage.setTitle("Hello Stage");
             byeStage.setX(500);
             byeStage.setY(300);
@@ -53,9 +48,6 @@ public class MultiStage extends Application {
             byeStage.show();
         }
     }
-    private class ByeButtonHandler implements EventHandler<ActionEvent>{
-        @Override
-        public void handle(ActionEvent event) {
-            byeStage.close();}
-    }
+
+    public static void main(String[] args) { launch(args); }
 }
