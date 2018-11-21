@@ -1,11 +1,17 @@
 package ZDraft;
-
 import javafx.beans.binding.DoubleBinding;
 
-import java.util.ArrayList;
-import java.util.Collections;
-import java.util.Iterator;
-import java.util.List;
+import java.util.*;
+
+//TODO: Int to char.
+//TODO: what is the difference between String() and String.valueOf(): see it!
+//TODO: Can Wrapper ++? Can char / Character ++? Prove with only one example.
+//TODO: Split a String using: white space, new line, tab, etc. "."
+//TODO: What is ''char == int"
+//TODO: What is "a".compareTo("A")
+//TODO: What is "cc".compareTo("ba")
+//TODO: Turn char a = 'a' to upper case
+//TODO: Sort an array. What is the compareTo, and how to change it? 1119 remember natural order!
 
 public class Practice1108 {
     public static void main(String[] args){
@@ -93,5 +99,60 @@ class Practice1119{
         while(iter.hasNext()){
             System.out.println(iter.next().id);
         }
+    }
+}
+
+class Practice1121{
+    public static void main(String[] args){
+        //TODO: Int to char.
+        int i = 1;
+        char c = (char)i;
+        System.out.println((char)(i+48));
+        System.out.println((char)(i+(int)('0')));
+
+        //TODO: what is the difference between String() and String.valueOf(): see it!
+        String s = String.valueOf(1);
+        // 3 kind:
+        // char[], byte - call String();
+        // other primitive type - call Wrapper.toString(),
+        // wrappers - call Wrapper.toString
+
+        //TODO: Can Wrapper ++? Can char / Character ++? Prove with only one example.
+        Character C = 'c';
+        int ii = ++C;
+
+        //TODO: Split a String using: white space, new line, tab, etc. "."
+        String ss = "abc def\nghi.jkl\tmno";
+        String[] sl1 = ss.split("[\\s\n\t.]");
+        String[] sl2 = ss.split("\\.");
+        for(String sss: sl1) System.out.println(sss);
+        for(String sss: sl2) System.out.println(sss);
+
+        //TODO: What is "char == int"
+        // By its true value.
+        System.out.println('1'==1);     // false
+        System.out.println('1'==49);    // true
+
+        //TODO: What is "a".compareTo("A")
+        System.out.println("a".compareTo("A"));    // true
+        System.out.println((int)('a'-'A'));    // true
+
+        //TODO: What is "cc".compareTo("ba")
+        // compare only the first character
+
+        //TODO: Turn char a = 'a' to upper case
+        char cc = 'a';
+        System.out.println(Character.toUpperCase(cc));
+
+        //TODO: Sort an array. What is the compareTo, and how to change it?
+        // 1119 remember natural order!
+        // 1121 mind Arrays and Collections
+        int[] il = new int[]{4,3,2,1};
+        Arrays.sort(il);
+        for(int iii: il)System.out.println(iii);
+        List<Integer> ill = new ArrayList<>();
+        for(int iii: il) ill.add(iii);
+//        Arrays.sort(ill);
+        Collections.sort(ill);
     }
 }
