@@ -15,14 +15,14 @@ public class D_PropertyBindingExample {
     // bmi = weight * 703 / height^2
 }
 
-class FluentAPI{
+class A_FluentAPI {
     DoubleProperty height = new SimpleDoubleProperty();
     DoubleProperty weight = new SimpleDoubleProperty();
 
     private DoubleProperty bmiProperty = new SimpleDoubleProperty();
 
     // Set DoubleProperty.set(160)
-    FluentAPI(){ height.set(160); weight.set(60); }
+    A_FluentAPI(){ height.set(160); weight.set(60); }
 
     double calcBMI(){
         // bind property
@@ -33,12 +33,12 @@ class FluentAPI{
     }
 
     public static void main(String[] args){
-        FluentAPI o = new FluentAPI();
+        A_FluentAPI o = new A_FluentAPI();
         System.out.println(o.calcBMI());
     }
 }
 
-class BindingsUtilityClass extends FluentAPI{
+class B_BindingsUtilityClass extends A_FluentAPI {
     // bmi = weight * 703 / height^2
     private NumberBinding bmiNumberBinding = Bindings.divide(
             Bindings.multiply(weight, 703),
@@ -49,7 +49,7 @@ class BindingsUtilityClass extends FluentAPI{
     double calcBMI(){ return bmiNumberBinding.doubleValue(); }
 }
 
-class LowLevelBinding extends BindingsUtilityClass{
+class C_LowLevelBinding extends B_BindingsUtilityClass {
     //
     private DoubleBinding bmiDoubleBinding = new DoubleBinding() {
         // Define dependencies
