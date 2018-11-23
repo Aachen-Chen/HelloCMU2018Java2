@@ -180,3 +180,34 @@ class Inteval {
     }
 
 }
+
+class PolyExample{
+    public static void main(String[] args){
+        callPerson(new Male());
+        callPerson(new Female());
+    }
+    private static void callPerson(Person p){
+        p.show();
+    }
+}
+
+abstract class Person{
+    int strength;
+    Person(){ strength = 1; }
+    abstract public void show();
+}
+class Male extends Person{
+    public void show(){
+        System.out.println(this.strength * 3);
+    }
+}
+class Female extends Person{
+    public void show(){
+        System.out.println(this.strength * 2);
+    }
+}
+
+
+
+
+
