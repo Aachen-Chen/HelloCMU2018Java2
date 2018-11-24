@@ -38,65 +38,73 @@ public class MortgageCalculator extends Application{
 		mortgageBinding.addListener((observable, oldValue, newValue) -> {
 			// newValue is the value return by binding's computeValue's return
 			if (newValue != null) {
-				mortgage = newValue;
-				if (
-					!(mortgage.principal < 10000 || mortgage.principal  > 1000000) &&
-					!(mortgage.interest < 0 || mortgage.interest > 25) &&
-					!(mortgage.term < 15 || mortgage.term > 30)) {
-					mortgageValue.setText(String.format(
-							"Monthly mortgage is $%,.2f",
-							newValue.calculateMortgage()));
-				} else mortgageValue.setText("");
+//				mortgage = newValue;
+//				if (
+//					!(mortgage.principal < 10000 || mortgage.principal  > 1000000) &&
+//					!(mortgage.interest < 0 || mortgage.interest > 25) &&
+//					!(mortgage.term < 15 || mortgage.term > 30)) {
+//					mortgageValue.setText(String.format(
+//							"Monthly mortgage is $%,.2f",
+//							newValue.calculateMortgage()));
+//				} else mortgageValue.setText("");
+				mortgageValue.setText(String.format(
+						"Monthly mortgage is $%,.2f",
+						newValue.calculateMortgage()));
 			} else  mortgageValue.setText("");
 		});
 		primaryStage.show();		
 	}
 
+	// Dynamic color
 	ObjectBinding<Mortgage> mortgageBinding = new ObjectBinding<>() {
 		{
 			super.bind(
-				principalTextField.textProperty(),
-				interestTextField.textProperty(),
-				termTextField.textProperty()
+					principalTextField.textProperty(),
+					interestTextField.textProperty(),
+					termTextField.textProperty()
 			);
 		}
 
+		// wrong type show red
 		@Override
 		protected Mortgage computeValue() {
-			double principal = 0, interest = 0, term = 0;
+//			double principal = 0, interest = 0, term = 0;
 			TextField textField = principalTextField;
-
+			mortgage = new Mortgage();
 			try {
 				textField.setStyle("-fx-text-inner-color: black;");
-				principal = Double.parseDouble(textField.getText().trim());
+				mortgage.setPrincipal(Double.parseDouble(textField.getText().trim()));
 
 				textField = interestTextField;
 				textField.setStyle("-fx-text-inner-color: black;");
-				interest = Double.parseDouble(textField.getText().trim());
+				mortgage.setInterest(Double.parseDouble(textField.getText().trim()));
 
 				textField = termTextField;
 				textField.setStyle("-fx-text-inner-color: black;");
-				term = Double.parseDouble(textField.getText().trim());
+				mortgage.setTerm(Double.parseDouble(textField.getText().trim()));
 
-				return new Mortgage(principal, interest, term);
-			} catch (NumberFormatException e) {
+				return mortgage;
+			} catch (NumberFormatException | InputOutOfRangeException e) {
 				textField.setStyle("-fx-text-inner-color: red;");
 				return null;
 			}
 		}
+
 	};
 
+	// report integrity
 	private class CalculateHandler implements EventHandler<ActionEvent> {
 		@Override
 		public void handle(ActionEvent event) {
 			try {
-				if (mortgage.principal < 10000 || mortgage.principal  > 1000000)
-					// when throw, show alert
-					throw new InputOutOfRangeException("Principal out of range. Must be between 10k and 1m");
-				if (mortgage.interest < 0 || mortgage.interest > 25)
-					throw new InputOutOfRangeException("Interest out of range. Must be between 0 and 25");
-				if (mortgage.term < 15 || mortgage.term > 30)
-					throw new InputOutOfRangeException("Term out of range. Must be between 15 and 30");
+				mortgageBinding.get();
+//				if (mortgage.principal < 10000 || mortgage.principal  > 1000000)
+//					 //when throw, show alert
+//					throw new InputOutOfRangeException("Principal out of range. Must be between 10k and 1m");
+//				if (mortgage.interest < 0 || mortgage.interest > 25)
+//					throw new InputOutOfRangeException("Interest out of range. Must be between 0 and 25");
+//				if (mortgage.term < 15 || mortgage.term > 30)
+//					throw new InputOutOfRangeException("Term out of range. Must be between 15 and 30");
 			} catch (InputOutOfRangeException | NullPointerException e) {
 				// after showing alert in throw, catch, and do new action.
 				mortgageValue.setText("Please enter valid value");

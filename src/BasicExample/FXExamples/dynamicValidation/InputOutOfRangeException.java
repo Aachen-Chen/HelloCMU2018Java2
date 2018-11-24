@@ -15,9 +15,9 @@ public class InputOutOfRangeException extends IllegalArgumentException{
 	}
 	
 	InputOutOfRangeException(String message) {
-		Alert alert = new Alert(AlertType.ERROR);
-		alert.setTitle("Invalid Input");
-		alert.setContentText(message);
-		alert.showAndWait();
+//		Alert alert = new Alert(AlertType.ERROR);
+//		alert.setTitle("Invalid Input");
+//		alert.setContentText(message);
+//		alert.showAndWait();
 	}
 }
