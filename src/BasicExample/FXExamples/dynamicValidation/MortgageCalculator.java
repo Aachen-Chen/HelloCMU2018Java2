@@ -23,14 +23,42 @@ public class MortgageCalculator extends Application{
 	TextField interestTextField = new TextField();		//takes interest rate input
 	TextField termTextField = new TextField();		//takes loan term input
 	Label mortgageValue = new Label("");				//used to display mortgage result value
-
 	Button calculateButton = new Button ("Calculate");
-	
 	Mortgage mortgage;
+
+	@Override
+	public void start(Stage primaryStage) throws Exception {
+		setupScene();
+		Scene scene = new Scene(root, 350, 175);
+
+		primaryStage.setScene(scene);
+		primaryStage.setTitle("Mortgage Calculator");
+
+		// Dynamic calculation
+		mortgageBinding.addListener((observable, oldValue, newValue) -> {
+			// newValue is the value return by binding's computeValue's return
+			if (newValue != null) {
+				mortgage = newValue;
+				if (
+					!(mortgage.principal < 10000 || mortgage.principal  > 1000000) &&
+					!(mortgage.interest < 0 || mortgage.interest > 25) &&
+					!(mortgage.term < 15 || mortgage.term > 30)) {
+					mortgageValue.setText(String.format(
+							"Monthly mortgage is $%,.2f",
+							newValue.calculateMortgage()));
+				} else mortgageValue.setText("");
+			} else  mortgageValue.setText("");
+		});
+		primaryStage.show();		
+	}
 
 	ObjectBinding<Mortgage> mortgageBinding = new ObjectBinding<>() {
 		{
-			super.bind(principalTextField.textProperty(), interestTextField.textProperty(), termTextField.textProperty());
+			super.bind(
+				principalTextField.textProperty(),
+				interestTextField.textProperty(),
+				termTextField.textProperty()
+			);
 		}
 
 		@Override
@@ -54,34 +82,41 @@ public class MortgageCalculator extends Application{
 			} catch (NumberFormatException e) {
 				textField.setStyle("-fx-text-inner-color: red;");
 				return null;
-			} 
+			}
 		}
 	};
 
-	@Override
-	public void start(Stage primaryStage) throws Exception {
-		setupScene();
-		Scene scene = new Scene(root, 350, 175);
-
-		primaryStage.setScene(scene);
-		primaryStage.setTitle("Mortgage Calculator");
-
-		mortgageBinding.addListener((observable, oldValue, newValue) -> {
-			if (newValue != null) {
-				mortgage = newValue;
-					if (!(mortgage.principal < 10000 || mortgage.principal  > 1000000) && 
-							!(mortgage.interest < 0 || mortgage.interest > 25) && 
-							!(mortgage.term < 15 || mortgage.term > 30)) { 
-						mortgageValue.setText(String.format("Monthly mortgage is $%,.2f", newValue.calculateMortgage()));
-					} else mortgageValue.setText("");
-			} else  mortgageValue.setText("");
-		});
-		primaryStage.show();		
+	private class CalculateHandler implements EventHandler<ActionEvent> {
+		@Override
+		public void handle(ActionEvent event) {
+			try {
+				if (mortgage.principal < 10000 || mortgage.principal  > 1000000)
+					// when throw, show alert
+					throw new InputOutOfRangeException("Principal out of range. Must be between 10k and 1m");
+				if (mortgage.interest < 0 || mortgage.interest > 25)
+					throw new InputOutOfRangeException("Interest out of range. Must be between 0 and 25");
+				if (mortgage.term < 15 || mortgage.term > 30)
+					throw new InputOutOfRangeException("Term out of range. Must be between 15 and 30");
+			} catch (InputOutOfRangeException | NullPointerException e) {
+				// after showing alert in throw, catch, and do new action.
+				mortgageValue.setText("Please enter valid value");
+			}
+		}
 	}
 
-	public static void main(String[] args) {
-		launch(args);
+	private class ClearHandler implements EventHandler<ActionEvent> {
+		@Override
+		public void handle(ActionEvent event) {
+			principalTextField.clear();
+			interestTextField.clear();
+			termTextField.clear();
+			principalTextField.setStyle("-fx-text-inner-color: black;");
+			interestTextField.setStyle("-fx-text-inner-color: black;");
+			termTextField.setStyle("-fx-text-inner-color: black;");
+			mortgageValue.setText("");
+		}
 	}
+
 
 	public void setupScene() {
 		Label principalLabel = new Label("Principal amount $10k-1m");
@@ -113,30 +148,8 @@ public class MortgageCalculator extends Application{
 		root.setPadding(new Insets(25,25,25,25));
 	}
 
-
-	private class CalculateHandler implements EventHandler<ActionEvent> {
-		@Override
-		public void handle(ActionEvent event) {
-			try {
-				if (mortgage.principal < 10000 || mortgage.principal  > 1000000) throw new InputOutOfRangeException("Principal out of range. Must be between 10k and 1m");
-				if (mortgage.interest < 0 || mortgage.interest > 25) throw new InputOutOfRangeException("Interest out of range. Must be between 0 and 25");
-				if (mortgage.term < 15 || mortgage.term > 30) throw new InputOutOfRangeException("Term out of range. Must be between 15 and 30"); 
-			} catch (InputOutOfRangeException | NullPointerException e) {
-				mortgageValue.setText("Please enter valid value");
-			}
-		}
+	public static void main(String[] args) {
+		launch(args);
 	}
 
-	private class ClearHandler implements EventHandler<ActionEvent> {
-		@Override
-		public void handle(ActionEvent event) {
-			principalTextField.clear();
-			interestTextField.clear();
-			termTextField.clear();
-			principalTextField.setStyle("-fx-text-inner-color: black;");
-			interestTextField.setStyle("-fx-text-inner-color: black;");
-			termTextField.setStyle("-fx-text-inner-color: black;");
-			mortgageValue.setText("");
-		}
-	}
 }
