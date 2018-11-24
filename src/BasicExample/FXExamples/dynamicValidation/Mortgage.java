@@ -1,4 +1,4 @@
-package dynamicmortgagecalculator;
+package BasicExample.FXExamples.dynamicValidation;
 
 public class Mortgage {
 	

@@ -1,4 +1,4 @@
-package mortgage;
+package BasicExample.FXExamples.inDynamicValidation;
 
 import javafx.scene.control.Alert;
 import javafx.scene.control.Alert.AlertType;

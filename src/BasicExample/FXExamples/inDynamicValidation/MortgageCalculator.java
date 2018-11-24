@@ -1,4 +1,4 @@
-package mortgage;
+package BasicExample.FXExamples.inDynamicValidation;
 
 import javafx.application.Application;
 import javafx.event.ActionEvent;

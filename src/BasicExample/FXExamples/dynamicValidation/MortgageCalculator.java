@@ -1,4 +1,4 @@
-package dynamicmortgagecalculator;
+package BasicExample.FXExamples.dynamicValidation;
 
 import javafx.application.Application;
 import javafx.beans.binding.ObjectBinding;

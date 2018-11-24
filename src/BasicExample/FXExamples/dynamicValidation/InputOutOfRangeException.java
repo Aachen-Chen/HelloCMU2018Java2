@@ -1,4 +1,4 @@
-package dynamicmortgagecalculator;
+package BasicExample.FXExamples.dynamicValidation;
 
 import javafx.scene.control.Alert;
 import javafx.scene.control.Alert.AlertType;
