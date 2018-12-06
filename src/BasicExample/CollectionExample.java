@@ -10,6 +10,31 @@ public class CollectionExample {
 
 }
 
+class EmptyCollectionExample{
+    public static void main(String[] args){
+        List<String> temp = new ArrayList<>();
+        // will not raise error.
+        for(String s: temp){
+            System.out.println(s);
+        }
+    }
+}
+
+class CopyExample{
+    public static void main(String[] args){
+        List<Integer> temp = new ArrayList<>();
+        // will not raise error.
+        for(int i: new int[] {1,2,3}){
+            temp.add(i);
+        }
+        List<Integer> sample = List.copyOf(temp);
+        temp = new ArrayList<>();
+        for(int i: sample){
+            System.out.println(i);
+        }
+    }
+}
+
 class OperationExamples{
     public static void main(String[] args){
         int[] il = new int[]{1,2,3, 4, 5};

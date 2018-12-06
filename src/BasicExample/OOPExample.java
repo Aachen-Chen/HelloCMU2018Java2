@@ -33,6 +33,17 @@ abstract class AbClass{
 //    }
 //}
 
+class StaticExample{
+    private int a;
+    private static int b;
+    StaticExample(){a = b; b=0;}
+    public void print(){System.out.println(a);}
+    public static void main(String [] args){
+        StaticExample s = new StaticExample();
+        s.print();
+    }
+}
+
 
 class PrivateClass{
     public static void method1(){
@@ -40,9 +51,6 @@ class PrivateClass{
     }
 }
 
-class RunnableClass implements Runnable{
-    public void run(){}
-}
 
 interface Examplifiable{
     // 1. "public static final" is redundant.
@@ -206,8 +214,5 @@ class Female extends Person{
         System.out.println(this.strength * 2);
     }
 }
-
-
-
 
 

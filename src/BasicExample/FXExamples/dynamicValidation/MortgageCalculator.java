@@ -32,7 +32,7 @@ public class MortgageCalculator extends Application{
 		Scene scene = new Scene(root, 350, 175);
 
 		primaryStage.setScene(scene);
-		primaryStage.setTitle("Mortgage Calculator");
+		primaryStage.setTitle("Dynamic Mortgage");
 
 		// Dynamic calculation
 		mortgageBinding.addListener((observable, oldValue, newValue) -> {
