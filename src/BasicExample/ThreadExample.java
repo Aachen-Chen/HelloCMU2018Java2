@@ -24,6 +24,8 @@ class LambdaThreadExample{
                 System.out.println(Thread.currentThread().getName()+": hi!");
             }
         });
+        t3.run();
+
     }
 }
 
