@@ -14,31 +14,36 @@ class myThread extends Thread{
     }
 }
 
-class LambdaThreadExample{
+class PPT11_1 {
     public static void main(String[] argss){
+        // Declaration
         Thread t0 = new Thread();
         Thread t1 = new Thread(new myThread());
         Thread t2 = new Thread(()->{});
-        Thread t3 = new Thread(new Runnable(){
+        Thread t3 = new Thread(()->{
+            System.out.println(Thread.currentThread().getName()+": hi!");
+        });
+        Thread t4 = new Thread(new Runnable(){
             public void run(){
                 System.out.println(Thread.currentThread().getName()+": hi!");
             }
         });
-        t3.run();
 
+        // setting name
+        t3.setName("t3");
+
+        // Start - regular method
+        t3.start();
+        t4.start();
+        t3.run();
+        t4.run();
     }
 }
 
 
 class Bank {
     public static void main(String[] args) {
-        BankAccount b = new BankAccount(30);			//shared resource
-        Thread one = new Thread (new BankingThread(b));
-        Thread two = new Thread (new BankingThread(b));
-        one.setName("Ryan");
-        two.setName("Monica");
-        one.start();
-        two.start();
+
     }
 
     public static String spacer(String name) {	//method to format the console output
@@ -50,41 +55,15 @@ class Bank {
     }
 }
 
-class BankingThread implements Runnable {
-    BankAccount b;
-    BankingThread(BankAccount b) {
-        this.b = b;
-    }
-    @Override
-    public void run() {
-        String name = Thread.currentThread().getName(); //who is running
-        String spacer = Bank.spacer(name); //for output formatting.
-        for (int i = 0 ; i < 3; i++) {
-            b.withdraw(10, i);
-            if (b.balance < 0) System.out.println(spacer + name + "*** Account overdrawn");
-        }
-    }
+class BankingThread {
 }
 
 class BankAccount {
-    static double balance;
-    BankAccount(double balance) { this.balance = balance; }  // constructor
 
-    public void withdraw(double amount, int i) {
-        String name = Thread.currentThread().getName(); //who is withdrawing
-        String spacer = Bank.spacer(name); //for output formatting. Shifts Ryan to right column.
-        if (balance >= amount) {
-            try {
-                System.out.println(spacer + name + i + " sees balance = $" + balance + " and sleeps");
-                TimeUnit.MILLISECONDS.sleep(500);
-                System.out.println(spacer + name + i + " wakes up, withdraws $" + amount);
-            } catch (InterruptedException e) { System.out.println(e.getMessage()); }
-            balance -= amount;
-        } else {
-            System.out.println(spacer + name + " sees: Not enough money!");
-        }
-    }
 }
+
+
+
 
 class Store{
     public static void main(String[] args){
