@@ -1,4 +1,4 @@
-package GoldmanSachesOA;
+package CLeetCode.GoldmanSachesOA;
 
 public class CharitableGiving {
     public static String[] charitableGiving(int[] input) {

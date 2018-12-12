@@ -1,4 +1,4 @@
-package GoldmanSachesOA;
+package CLeetCode.GoldmanSachesOA;
 
 
 import BasicExample.A_ExampleList.*;

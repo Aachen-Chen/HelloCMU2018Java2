@@ -1,4 +1,4 @@
-package GoldmanSachesOA;
+package CLeetCode.GoldmanSachesOA;
 
 public class PressAforCapsLock {
     public static String CapsLock(String input) {

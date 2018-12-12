@@ -1,4 +1,4 @@
-package GoldmanSachesOA;
+package CLeetCode.GoldmanSachesOA;
 
 import java.util.Arrays;
 import java.util.List;

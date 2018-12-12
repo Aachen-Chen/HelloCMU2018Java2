@@ -1,4 +1,4 @@
-package GoldmanSachesOA;
+package CLeetCode.GoldmanSachesOA;
 
 import java.util.HashMap;
 import java.util.Map;

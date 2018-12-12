@@ -1,10 +1,11 @@
-package BasicExample;
+package DMultiThread;
 
 import java.util.LinkedList;
 import java.util.Queue;
-import java.util.concurrent.TimeUnit;
+import BasicExample.A_ExampleList.ThreadExample;
 
-public class ThreadExample {
+
+public class ThreadExamples implements ThreadExample {
 }
 
 class myThread extends Thread{
