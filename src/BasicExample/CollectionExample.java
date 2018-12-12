@@ -60,6 +60,40 @@ class OperationExamples{
 }
 
 
+class IteratorExample{
+    public static void main(String[] args){
+        List<Integer> l = new ArrayList<>();
+        // use
+        Iterator<Integer> iter = l.iterator();
+        Iterator<Integer> listIter = l.listIterator();
+
+        while(listIter.hasNext()){
+            System.out.println(iter.next());
+        }
+
+        // you need a new one for new iteration.
+//        while(listIter.hasNext()){
+        listIter = l.listIterator();
+        while(listIter.hasNext()){
+            int i = listIter.next();
+            // use iterator to remove.
+            if(i==2){ listIter.remove();}
+        }
+//        while(listIter.hasPrevious())
+
+        // use for this way.
+        for(Iterator<Integer> newIter=l.listIterator(); newIter.hasNext();){
+            int i= newIter.next();
+            if(i==3){
+                newIter.remove();
+            }
+        }
+
+        // black tech
+        l.removeIf(i -> i == 3);
+    }
+
+}
 
 
 
