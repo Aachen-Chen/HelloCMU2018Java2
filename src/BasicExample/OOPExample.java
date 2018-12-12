@@ -16,8 +16,13 @@ class AbstractFinalExample {
     public static void main(String [] arg){
         AbClass.aa();
     }
+//    static void test();
+    final static void test(){};
 }
 
+interface CanIHaveMethod{
+    void test();
+}
 
 abstract class AbClass{
     short a = 1;
@@ -32,6 +37,9 @@ abstract class AbClass{
 //
 //    }
 //}
+
+interface BeExtended {}
+interface ExtendingInterface extends BeExtended{}
 
 class StaticExample{
     private int a;
@@ -208,11 +216,23 @@ class Male extends Person{
     public void show(){
         System.out.println(this.strength * 3);
     }
+    public void test(){}
 }
 class Female extends Person{
     public void show(){
         System.out.println(this.strength * 2);
     }
 }
+
+
+class PolymorphismExample{
+    // 181212
+    public static void main(String args[]){
+        Person p = new Male();
+//        p.test();
+        ((Male) p).test();
+    }
+}
+
 
 
