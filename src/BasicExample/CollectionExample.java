@@ -5,6 +5,8 @@ import java.util.LinkedList;
 import java.util.Vector;
 import java.util.Stack;
 
+import BasicExample.A_ExampleList.*;
+
 public class CollectionExample {
     public interface WordLadderII126{};
 
@@ -35,7 +37,7 @@ class CopyExample{
     }
 }
 
-class OperationExamples{
+class ArrayListOptAndIteration implements ListExample, IteratorExample{
     public static void main(String[] args){
         int[] il = new int[]{1,2,3, 4, 5};
         String[] sl = new String[]{"a", "b", "c"};
@@ -49,18 +51,20 @@ class OperationExamples{
         // Change plural digit to 10 and delete them.
         Iterator<Integer> iter = al.iterator();
         while(iter.hasNext()){
-            if((iter.next() % 2)==0) { iter.remove();}
+            if((iter.next() % 2)==0) {
+                iter.remove();}
         }   // you cannot modify with iter. Use ListIterator
-        ListIterator<Integer> liter = al.listIterator();
-        while(iter.hasNext()){
-            if((liter.next() % 2)==0) { liter.set(10); liter.add(11);}
-        }   // you cannot delete with iter. Use ListIterator
 
+        ListIterator<Integer> liter = al.listIterator();
+        while(liter.hasNext()){
+            if((liter.next() % 2)==0) {
+                liter.set(10); liter.add(11);}
+        }   // you cannot delete with iter. Use ListIterator
     }
 }
 
 
-class IteratorExample{
+class IteratorExample1212 implements IteratorExample {
     public static void main(String[] args){
         List<Integer> l = new ArrayList<>();
         // use
