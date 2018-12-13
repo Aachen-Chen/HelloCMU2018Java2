@@ -1,9 +1,7 @@
 package BasicExample;
 
 import java.util.*;
-import java.util.LinkedList;
-import java.util.Vector;
-import java.util.Stack;
+import java.util.Objects;
 
 import BasicExample.A_ExampleList.*;
 
@@ -99,5 +97,94 @@ class IteratorExample1212 implements IteratorExample {
 
 }
 
+class Book1212 implements HashEqualsToStringExample, Comparable<Book1212>{
+    int isbn; String title, author;
+
+    @Override
+    public String toString() {
+        return title;
+    }
+
+    @Override
+    public int hashCode() {
+        return Objects.hash(isbn, title, author);
+    }
+
+    @Override
+    public boolean equals(Object obj) {
+        if (obj == null) return false;      // if o is null, then it can't be equal to 'this'
+        if (this == obj) return true;       // if both point to same object, then they are equal
+        if (getClass() != obj.getClass()) return false; //if not of same type, they can't be equal
+        Book1212 b = (Book1212) obj;                  //now that we know obj is unique, non-null Book object, cast it to Book
+        return title.equals(b.title) && author.equals(b.author) && (isbn == b.isbn); //compare values
+    }
+
+    @Override
+    public int compareTo(Book1212 o) {
+        return this.isbn-o.isbn;
+    }
+}
+
+
+
+
+// 181212 Example from ppt 6.6
+
+abstract class Animal {
+    public abstract void introduce();
+}
+interface Pet {
+    public void petRequest();
+}
+
+
+class PolymorphicZoo {
+
+    public static void main(String args[]) {
+        PolymorphicZoo pittsburghZoo= new PolymorphicZoo();
+        Animal species = pittsburghZoo.getSpecies();
+        species.introduce();
+        // TODO: Note that whoever implements Pet is instance of Pet.
+//        if (species instanceof Dog) ((Dog)species).petRequest();
+        if (species instanceof Pet) ((Pet)species).petRequest();
+    }
+
+    public Animal getSpecies() {
+        Animal species = null;
+        Random r = new Random();
+        int number = r.nextInt(3);
+
+        switch (number) {
+            case 0: species = new Tiger(); break;
+            case 1: species = new Lion(); break;
+            case 2: species = new Dog(); break;
+            default: break;
+        }
+        return species;
+    }
+}
+
+class Dog extends Animal implements Pet {
+    @Override
+    public void introduce() {
+        System.out.println("Bark...");
+    }
+    public void petRequest(){ // interface method
+        System.out.println ("Wagging tail!");
+    }
+}
+class Tiger extends Animal {
+    @Override
+    public void introduce() {
+        System.out.println("Grrrr...");
+    }
+}
+
+class Lion extends Animal {
+    @Override
+    public void introduce() {
+        System.out.println("Roar...");
+    }
+}
 
 
