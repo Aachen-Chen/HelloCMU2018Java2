@@ -1,5 +1,10 @@
 package BasicExample;
 
+
+import BasicExample.A_ExampleList.InnerClassExample;
+import BasicExample.A_ExampleList.LambdaExample;
+import BasicExample.A_ExampleList.SortExample;
+
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.Comparator;
@@ -102,6 +107,12 @@ class Figures extends Examplification{
 }
 
 
+class CompareExample{
+    public static void main(String[] args){
+        Integer s=1;
+        s.compareTo(2);
+    }
+}
 
 class HeinzStudent implements Comparable<HeinzStudent>{
     private int id;
@@ -113,6 +124,7 @@ class HeinzStudent implements Comparable<HeinzStudent>{
     public int compareTo(HeinzStudent o) {
         return this.id - o.id;
     }
+    // Natural order (small->large, a-z) is this.id - o.id
 }
 
 class GpaComparator implements Comparator<HeinzStudent>{
@@ -123,7 +135,7 @@ class GpaComparator implements Comparator<HeinzStudent>{
 }
 
 
-class Heinz{
+class Heinz implements InnerClassExample {
     List<HeinzStudent> students;
     Heinz(){
         students = new ArrayList<>();
@@ -143,20 +155,23 @@ class Heinz{
     }
 }
 
-interface SortExample{}
-
-class InnerClassExample implements SortExample {
+class InnerClassExample1811 implements SortExample, LambdaExample {
     public static void main(String[]args){
         Heinz mism2018 = new Heinz();
+        // Sort by defined order
         Collections.sort(mism2018.students);
+        // Sort by interface Comparator's implementation
         Collections.sort(mism2018.students, new GpaComparator());
+        // Sort by inner class
         mism2018.sortbyAgeHeight();
+        // Sort by anonymous class declaration
         Collections.sort(mism2018.students, new Comparator<HeinzStudent>() {
             @Override
             public int compare(HeinzStudent o1, HeinzStudent o2) {
                 return o1.age - o2.age;
             }
         });
+        // Sort by lambda expression
         Collections.sort(mism2018.students, (o1, o2)->o1.height-o2.height);
     }
 }
