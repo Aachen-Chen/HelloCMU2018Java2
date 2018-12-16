@@ -22,10 +22,7 @@ public class Practice1108 {
         System.out.println(c1 == 49);
         System.out.println(c1);   // true
         notes();
-        //
-//        String.valueOf();
-//        String();
-        
+
     }
 
     private static void notes(){
@@ -148,7 +145,7 @@ class Practice1121{
         // 1119 remember natural order!
         // 1121 mind Arrays and Collections
         int[] il = new int[]{4,3,2,1};
-        Arrays.sort(il);
+        Arrays.sort(il);                    // 181216 this example is moved to Collections' example
         for(int iii: il)System.out.println(iii);
         List<Integer> ill = new ArrayList<>();
         for(int iii: il) ill.add(iii);
@@ -203,7 +200,7 @@ class Practice1213{
         // TODO: Concatenate two string
         String s7 = s6+s5;
 
-        // TODO: Sort string[], Z->A      //cao, bu hui le...
+        // TODO: Sort string[], Z->A      //1213 cao, bu hui le...
         String[] abc = new String[]{"c", "b", "a"};
         Arrays.sort(abc);
         for(String sss: abc){System.out.println(sss);}

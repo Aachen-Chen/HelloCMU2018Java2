@@ -67,3 +67,83 @@ class MapSolution implements MapExample {
         if(!hashMap.isEmpty()) {System.out.println(hashMap.size());}
     }
 }
+
+class DataTypePractice{
+    public static void main(String [] args){
+        // 2018.12.16.
+        // TODO: CONVERSION
+        // TODO: String to int
+        String s1 = "1";
+        int i1 = Integer.parseInt(s1);      // parse presentation
+
+        // TODO: Int to char.
+        char c1 =(char)i1;                  // pass value, not presentation
+        System.out.println((char)(c1+48));  // this way is real ascii 49, printed as '1'
+        // Note: Character does not have .parseChar() method, cannot String->char.
+
+        // TODO: Char to Character
+        Character c2 = 'c';
+
+        // TODO: How can we achieve auto-boxing and auto-unboxing:
+        // TODO: Can Wrapper ++? Can char / Character ++? Prove with only one example.
+        Character c3 = ++c2;    // 1. char can ++; 2. Wrapper can auto box primitive
+        int i2 = ++c3;          // 3. Wrapper can ++;  4. Wrapper can auto-unbox to other primitive (not alwayse)
+//        Integer ii = ++(new Integer(1));          // cannot ++ new declaration
+        Integer ii = i2;
+        char c4 = Character.highSurrogate(ii);      // 5. seems to involve surrogate problems.
+
+        // TODO: Can wrapper[]?
+
+        // TODO: any type to any type's Wrapper (String to Integer)
+        String s2 = String.valueOf(i1);
+        Double d1 = Double.valueOf("2.2");
+
+        // TODO: any wrapper type to String
+        // 1213 String's valueOf use both its constructor and... //1216 the objects' toString()
+        String s20 = String.valueOf(new Character('c'));
+        // TODO: any primitive type to String
+        String s5 = String.valueOf(0.2334f);
+        System.out.printf("Float to String: %s\n", s5);
+
+        // TODO: what is the difference between String() and String.valueOf(): see it!
+        String s = String.valueOf(1);
+        // 3 kind:
+        // char[], byte - call String();
+        // other primitive type - call Wrapper.toString(),
+        // wrappers - call Wrapper.toString
+
+        // TODO: Turn char[] into String
+        String s6 = new String(new char[]{'a','b','c'});
+
+        // TODO: Use one line to create: a String[] "abcde", an Integer[] {1,2,3,4,5}
+        // TODO: Is "abc" =="cbd"?
+
+        // TODO: String (regular expression)
+        // TODO: Concatenate two string
+        String s7 = s6+s5;
+
+        // TODO: Append string and stringbuilder
+        // TODO: Split a String using: white space, new line, tab, etc. "."
+        String ss = "abc def\nghi.jkl\tmno";
+        String[] sl1 = ss.split("[\\s\n\t.]");
+        String[] sl2 = ss.split("\\.");
+        for(String sss: sl1) System.out.println(sss);
+        for(String sss: sl2) System.out.println(sss);
+
+        // TODO: char, ascii
+        // TODO: How do you assign value to char
+        // TODO: If assign some value to char, will it print the value?
+        // TODO: What is char == int
+        // By its true value.
+        System.out.println('1'==1);     // false
+        System.out.println('1'==49);    // true
+
+        // TODO: What is "a".compareTo("A")
+        // Remember natural order return negative.
+        // TODO: What is "cc".compareTo("ba")
+        // compare only the first character
+
+        // TODO: Turn char 'a' to upper case
+        System.out.println(Character.toUpperCase('a'));
+    }
+}
