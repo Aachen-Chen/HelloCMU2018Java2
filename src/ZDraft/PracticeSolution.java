@@ -44,11 +44,15 @@ class MapSolution implements MapExample {
 
         //TODO: add key dbeca, value 42531
         String[] s = "d b e c a".split("\\s"); Integer[] i = new Integer[]{4,2,5,3,1};
-        for(int num=0; num<5;){ treeMap.put(s[num], i[num]); num++; }
+        for(int num=0; num<5;){
+            treeMap.put(s[num], i[num]); num++;
+        }
 
         //TODO: iterate over its key and value, if contains key c or value 2, delete it.
         for(Map.Entry<String, Integer> e: treeMap.entrySet()){
-            if(e.getKey().equals("c") || e.getValue()==2){ treeMap.remove(e.getKey()); }
+            if(e.getKey().equals("c") || e.getValue()==2){
+                treeMap.remove(e.getKey());
+            }
         }
 
         //TODO: take [0, 2) of the treemap to create a hashmap
