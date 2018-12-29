@@ -7,7 +7,7 @@ import java.util.TreeMap;
 import BasicExample.A_ExampleList.*;
 
 public class PracticeSolution {
-    // TODO: Use one line to create: a String[] “abcde”, an Integer[] {1,2,3,4,5}
+    // TODO: Use one line to create: a String[] "abcde", an Integer[] {1,2,3,4,5}
     String[] s = "d b e c a".split("\\s"); Integer[] i = new Integer[]{4,2,5,3,1};
 }
 
@@ -63,8 +63,32 @@ class MapSolution implements MapExample {
         hashMap.remove(treeMap.lastKey());
 
         //TODO: check if hashmap is empty
-        //TODO: return hasmap’s size
+        //TODO: return hasmap's size
         if(!hashMap.isEmpty()) {System.out.println(hashMap.size());}
+    }
+}
+
+class ArrayPractice{
+    public static void main(String[] args){
+        // TODO: Declare an array, initialize anonymously 1119 Really work?	1213: I think should work.
+        int[] iArray = new int[]{1,2,3};
+        int[] iA2 = new int[3];
+
+        // TODO: Sort string[], Z->A
+        String[] sA = new String[]{"z", "a", "b", "c"};
+        Arrays.sort(sA);
+        for(String a: sA){System.out.println(a);}
+
+        // TODO: Sort an array. What is the compareTo, and how to change it? 1119 remember natural order!
+        class Small implements Comparable<Small>{
+            String value;       Small(String v){ this.value = v; }
+            @Override
+            public int compareTo(Small o) { return o.value.compareTo(this.value); }
+        }
+        Small[] smalls = new Small[4];
+        for(int i=0; i<smalls.length; i++){ smalls[i] = new Small(sA[i]); }
+        Arrays.sort(smalls);
+        for(Small s: smalls){ System.out.println(s.value); }
     }
 }
 
@@ -145,5 +169,39 @@ class DataTypePractice{
 
         // TODO: Turn char 'a' to upper case
         System.out.println(Character.toUpperCase('a'));
+    }
+}
+
+class Node{
+    // 181228
+    int v;
+    Node next;
+    Node(int v){this.v=v;}
+}
+
+class LinkedListExample{
+    // 181228
+    public static void main(String[] args){
+        // TODO: Create new from array
+        int[] a = new int[]{1,2,3};
+        Node head = new Node(a[0]);
+        Node cur = head;
+        for(int i=1; i<a.length; i++){
+            cur.next = new Node(a[i]);
+            cur = cur.next;
+        }
+
+        // TODO: print an Linked List
+        cur = head;
+        while(cur!=null){
+            System.out.print(cur.v+" ");
+            cur=cur.next;
+        }
+
+        // TODO: delete a node
+
+
+        // TODO:
+
     }
 }
