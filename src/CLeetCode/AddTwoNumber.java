@@ -1,5 +1,21 @@
 package CLeetCode;
 
+// A misteriously complex method i used to developed....
+//         // 1120 Why not just add?
+//         boolean end = false;
+//         ListNode cur1=l1; ListNode cur2=l2; int ten=0;
+//         ListNode root=null;
+//         ListNode res=null;
+//         while(!(l1==null && l2 == null && ten==0)){
+//             // judge if it is end
+//             // if not end, try to add
+//             int sum = (l1==null? 0: l1.val) + (l2==null? 0: l2.val) + ten;
+//             if(sum>9){ ten=1; sum-=10; }
+//             res = new ListNode(sum);
+//             if(root==null){root = res;}
+//             res = res.next;
+//         }
+//         return res;
 
 public class AddTwoNumber {
     public static void main(String[] args){
