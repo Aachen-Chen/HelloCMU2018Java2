@@ -3,6 +3,91 @@ package CLeetCode;
 import java.util.*;
 
 
+class CherryPickup {
+    /**
+     * Imagine two people starting at the same point (0, 0)
+     *
+     * The maximum cherries on the path from (0, 0) -> (n - 1, n - 1) -> (0, 0) is equals to
+     * the maximum cherries picked if two people starting at the same point (0, 0)
+     * and ended at (n - 1, n -1) simultaneously
+     */
+    public int cherryPickup(int[][] grid) {
+        assert (grid.length == grid[0].length);
+        final int n = grid.length;
+        int[][][] memo = new int[n][n][n];
+        // init memo
+        for (int i = 0; i < n; i ++) {
+            for (int j = 0; j < n; j ++) {
+                Arrays.fill(memo[i][j], Integer.MIN_VALUE);
+            }
+        }
+
+        memo[0][0][0] = grid[0][0];
+        return Math.max(0, solve(n - 1, n - 1, n - 1, memo, grid));
+    }
+
+    // returns the maximum cherries we could get from (0, 0) -> (x1, y1) & (x2, y2)
+    // since the two people moves simultaneously, thus we only need (x1, y1, x2) to represents the position
+    private int solve(int x1, int y1, int x2, int[][][] memo, int[][] grid) {
+        final int n = grid.length;
+        // illegal positions
+        int y2 = x1 + y1 - x2;
+        if (x1 < 0 || y1 < 0 || x2 < 0 || y2 < 0 || x1 >= n || y1 >= n || x2 >= n || y2 >= n) {
+            return -1;
+        }
+        // we have already solved it
+        if (memo[x1][y1][x2] != Integer.MIN_VALUE) {
+            return memo[x1][y1][x2];
+        }
+        // un-reachable
+        if (grid[x1][y1] < 0 || grid[x2][y2] < 0) {
+            return -1;
+        }
+
+        /**
+         * four previous positions:
+         * (x1 - 1, y1) & (x2 - 1, y2)
+         * (x1 - 1, y1) & (x2, y2 - 1)
+         * (x1, y1 - 1) & (x2 - 1, y2)
+         * (x1, y1 - 1) & (x2, y2 - 1)
+         */
+        int max = Math.max(
+                Math.max(solve(x1 - 1, y1, x2 - 1, memo, grid),
+                        solve(x1 - 1, y1, x2, memo, grid)),
+                Math.max(solve(x1, y1 - 1, x2 - 1, memo, grid),
+                        solve(x1, y1 - 1, x2, memo, grid)));
+
+        if (max >= 0) {
+            max += (x1 != x2 || y1 != y2) ? grid[x1][y1] + grid[x2][y2] : grid[x1][y1];
+        }
+
+        memo[x1][y1][x2] = memo[x2][y2][x1] = max;
+        // memo[x1][y1][x2] = max;
+
+        return max;
+    }
+
+}
+
+class DungeonGame174 {
+    public int calculateMinimumHP(int[][] map) {
+        int[][] hp = new int[map.length][map[0].length];
+        hp[map.length - 1][map[0].length - 1] = Math.max(1 - map[map.length - 1][map[0].length - 1], 1);
+        return dfs(map, 0, 0, hp);
+    }
+
+    private int dfs(int[][] map, int i, int j, int[][] hp) {
+        if (i >= map.length || j >= map[0].length) return Integer.MIN_VALUE;
+        if (hp[i][j] != 0) return hp[i][j];
+        int r = dfs(map, i, j + 1, hp);
+        int d = dfs(map, i + 1, j, hp);
+        int goRight = r == Integer.MIN_VALUE ? Integer.MAX_VALUE : Math.max(r - map[i][j], 1);
+        int goDown = d == Integer.MIN_VALUE ? Integer.MAX_VALUE : Math.max(d - map[i][j], 1);
+        hp[i][j] = Math.min(goRight, goDown);
+        return hp[i][j];
+    }
+}
+
 public class Solution {
     // Make neighborTable and result public to all method,
     // so don't have to pass by value.

@@ -3,6 +3,11 @@ package CLeetCode;
 import java.util.HashMap;
 
 public class CopyListwithRandomPointer {
+
+    // TODO: Solution:
+    // 181228: on lc the fastest way simply create new node for random,
+    //      rather than pointing to the node on chain. I don't think it is right.
+
     public RandomListNode copyRandomList181228(RandomListNode head) {
         if(head==null) return null;
         RandomListNode res = new RandomListNode(head.label);
